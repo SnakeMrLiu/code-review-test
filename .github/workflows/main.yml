@@ -25,8 +25,8 @@ jobs:
       - name: Create libs directory
         run: mkdir -p ./libs
 
-      #- name: Download openai-code-review-sdk JAR
-        #run: wget -O ./libs/openai-code-review-sdk-1.1.jar https://github.com/SnakeMrLiu/code-review-test-log/master/download/v1.1/openai-code-review-sdk-1.1.jar
+      - name: Download openai-code-review-sdk JAR
+        run: wget -O ./libs/openai-code-review-sdk-1.1.jar https://github.com/xfg-studio-project/openai-code-review-log/releases/download/v1.1/openai-code-review-sdk-1.1.jar
 
       - name: Get repository name
         id: repo-name
