@@ -5,11 +5,14 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+
+import javax.servlet.MultipartConfigElement;
 
 @SpringBootApplication
 @ServletComponentScan
@@ -35,6 +38,11 @@ public class SpringBootStart {
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
         return template;
     }
-
+    @Bean
+    MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setLocation("/data/upload");
+        return factory.createMultipartConfig();
+    }
 
 }
