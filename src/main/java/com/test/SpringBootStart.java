@@ -38,10 +38,12 @@ public class SpringBootStart {
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
         return template;
     }
+
     @Bean
-    MultipartConfigElement multipartConfigElement() {
+    public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        factory.setLocation("/data/upload");
+        factory.setMaxFileSize("10240KB");
+        factory.setMaxRequestSize("10240KB");
         return factory.createMultipartConfig();
     }
 
